@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ticket 10674</title>
+  </head>
+  <body>
+    <p>Version: <span id="of-version"></span></p>
+    <button onclick="show()">show</button>
+    <button onclick="hide()">hide</button>
+  </body>
+  <script>
+    const ofVersion = document.querySelector("#of-version");
+
+    const show = async () => {
+      let window = await fin.Window.wrap({
+        name: "child-window",
+        uuid: "hide-show-bug"
+      });
+      await window.show();
+    };
+    const hide = async () => {
+      let window = await fin.Window.wrap({
+        name: "child-window",
+        uuid: "hide-show-bug"
+      });
+      await window.hide();
+    };
+    if (typeof fin !== "undefined") {
+      fin.System.getVersion()
+        .then(v => (ofVersion.textContent = v))
+        .catch(err => console.log(err));
+      (async () => {
+        await fin.Window.create({
+          name: "child-window",
+          url: "http://giphy.com",
+          defaultHeight: 600,
+          defaultWidth: 600
+        });
+      })();
+    } else {
+      ofVersion.textContent = "You are probably running in a browser.";
+    }
+  </script>
+</html>

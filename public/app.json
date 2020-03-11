@@ -1,0 +1,15 @@
+{
+  "startup_app": {
+    "name": "hide-show-bug",
+    "uuid": "hide-show-bug",
+    "url": "http://localhost:5555/index.html",
+    "defaultHeight": 600,
+    "defaultWidth": 600,
+    "autoShow": true
+  },
+  "runtime": {
+    "arguments": "",
+    "version": "15.80.48.13"
+  },
+  "shortcut": {}
+}
